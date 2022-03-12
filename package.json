@@ -18,6 +18,7 @@
     "@types/nprogress": "^0.2.0",
     "@types/reflexbox": "^4.0.4",
     "@types/styled-components": "^5.1.24",
+    "babel-plugin-styled-components": "^2.0.6",
     "next": "12.1.0",
     "next-auth": "^4.2.1",
     "nextjs-progressbar": "^0.0.14",
