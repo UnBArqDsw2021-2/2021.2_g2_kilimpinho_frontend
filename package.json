@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@types/nprogress": "^0.2.0",
+    "@types/react-input-mask": "^3.0.1",
     "@types/reflexbox": "^4.0.4",
     "@types/styled-components": "^5.1.24",
     "babel-plugin-styled-components": "^2.0.6",
@@ -27,6 +28,7 @@
     "react-dom": "17.0.2",
     "react-hook-form": "^7.27.1",
     "react-icons": "^4.3.1",
+    "react-input-mask": "^2.0.4",
     "react-toastify": "^8.2.0",
     "reflexbox": "^4.0.6",
     "styled-components": "^5.3.3",

@@ -2,6 +2,7 @@ import { forwardRef, useCallback, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 
 import { Flex } from 'reflexbox';
+import { useTheme } from 'styled-components';
 
 import { Input, InputProps } from '../Input';
 
@@ -13,27 +14,21 @@ export const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
       [showPassword]
     );
 
+    const theme = useTheme();
     const PasswordIcon = useCallback(
       (_) => (
         <Flex alignItems="center">
-          {/* {hasErrors && (
-          <Divider
-            orientation="vertical"
-            color={!hasErrors ? 'lightGray200' : 'red'}
-            width="20px"
-          />
-        )} */}
           {!showPassword ? (
             <FaRegEye
               size={23}
               onClick={togglePasswordShown}
-              fill="url(#svg-gradient)"
+              fill={theme.colors.darkGray400}
             />
           ) : (
             <FaRegEyeSlash
               size={23}
               onClick={togglePasswordShown}
-              fill="url(#svg-gradient)"
+              fill={theme.colors.darkGray400}
             />
           )}
         </Flex>

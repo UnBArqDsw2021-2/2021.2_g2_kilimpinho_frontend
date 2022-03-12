@@ -21,9 +21,12 @@ const buttonStylesModifiers = (theme: DefaultTheme) => ({
   color: {
     primary: css`
       background-color: ${theme.colors.primary};
+      &:hover {
+        background-color: ${theme.colors.primaryTint};
+      }
     `,
     secondary: css`
-      background-color: ${theme.colors.primary};
+      background-color: ${theme.colors.secondary};
     `,
     black: css`
       background-color: ${theme.colors.black};
@@ -64,11 +67,6 @@ export const Button = styled.button<IButtonStyleProps>`
 
     transition: all 0.2s;
     transition: background 0.5s;
-
-    &:hover {
-      background-position: right center;
-      text-decoration: none;
-    }
 
     ${size && buttonStylesModifiers(theme).color[color]};
     ${size && buttonStylesModifiers(theme).size[size]};

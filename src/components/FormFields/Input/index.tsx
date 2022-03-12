@@ -74,22 +74,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           ref={iconRef}
           isClickable={!!icon?.props?.onClick || iconIsClickable}
         >
-          {errors && (
-            <>
-              <MdErrorOutline
-                className="error-icon"
-                size={22}
-                color={theme.colors.red}
-                cursor="default"
-              />
-            </>
-          )}
-
           {!!icon && icon}
         </S.Icon>
       </S.InputGroup>
 
-      <InputErrorMessage errors={errors} ref={marginRef} />
+      <InputErrorMessage errors={errors!} ref={marginRef} />
     </S.InputContainer>
   );
 });

@@ -20,37 +20,17 @@ export const InputContainer = styled.div<{ marginBottom?: number }>`
 
 export const InputGroup = styled.div`
   position: relative;
-  padding: 15px 0 0;
+  padding: 12px 0 0;
   overflow: hidden;
-`;
-
-export const HighlightBar = styled.div`
-  ${({ theme }) => css`
-    position: absolute;
-    height: 2px;
-    width: 0;
-    bottom: 0;
-    background-color: ${theme.colors.primary};
-    background-image: linear-gradient(
-      to right,
-      ${theme.colors.primaryShade} 25%,
-      ${theme.colors.primaryTint} 100%
-    );
-    box-shadow: 0px 0px 15px 0px ${theme.colors.primary};
-    transition: all 0.3s ease-in-out;
-  `}
 `;
 
 export const Label = styled.label<InputStyles>`
   ${({ theme, color }) => css`
-    position: absolute;
-    top: 0px;
     display: block;
     transition: top ease 0.2s, font-size 0.2s;
-    font-size: ${theme.font.sizes.xxsmall};
-    color: ${color === 'white'
-      ? theme.colors.lightGray
-      : theme.colors.darkGray400};
+    font-size: ${theme.font.sizes.xsmall};
+    margin-bottom: ${theme.spacings.tiny};
+    color: ${theme.colors.darkGray400};
     text-transform: capitalize;
     pointer-events: none;
   `}
@@ -65,8 +45,8 @@ export const Icon = styled.div<{
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 20px;
-    right: 0px;
+    top: 40px;
+    right: 8px;
     color: ${theme.colors[color]};
 
     ${isClickable &&
@@ -124,8 +104,8 @@ export const Input = styled.input<InputStyles>`
 
     &:focus {
       background-color: #d2e0fc;
-      border: 1px solid ${error ? theme.colors.red : theme.colors.primaryTint};
-      border-bottom-width: 2px;
+      border-color: ${error ? theme.colors.red : theme.colors.primary};
+      box-shadow: inset 0px -2px 0px ${error ? theme.colors.red : theme.colors.primary};
     }
 
     &:required,
