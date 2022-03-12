@@ -69,7 +69,7 @@ export const Input = styled.input<InputStyles>`
     outline: 0;
     color: ${theme.colors[color]};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.tiny};
-    padding-right: ${iconWidth ? `calc(${iconWidth}px + 2px)` : '0'};
+    padding-right: ${iconWidth ? `calc(${iconWidth}px + 10px)` : '0'};
     background: transparent;
     transition: all 0.15s ease-out, border-color 0.25s;
 
@@ -99,7 +99,7 @@ export const Input = styled.input<InputStyles>`
     }
 
     &:not(:placeholder-shown) {
-      border-color: ${theme.colors.primary};
+      border-color: ${error ? theme.colors.red : theme.colors.primary};
     }
 
     &:focus {

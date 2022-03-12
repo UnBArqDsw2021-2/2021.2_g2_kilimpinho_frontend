@@ -3,8 +3,7 @@ import styled, { css } from 'styled-components';
 export const AuthContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
     gap: ${theme.spacings.medium};
     min-height: 100vh;

@@ -21,18 +21,8 @@ const swrConfig: SWRConfiguration = {
   shouldRetryOnError: false,
 };
 
-const nextNprogressOptions: NProgressOptions = {
+const nextNprogressOptions = {
   showSpinner: false,
-  minimum: 0,
-  template: '',
-  easing: '',
-  speed: 0,
-  trickle: false,
-  trickleSpeed: 0,
-  parent: '',
-  positionUsing: '',
-  barSelector: '',
-  spinnerSelector: '',
 };
 
 toast.configure({
