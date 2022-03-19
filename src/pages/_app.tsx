@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { SessionProvider } from 'next-auth/react';
 import NextNprogress from 'nextjs-progressbar';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import type { NProgressOptions } from 'nprogress';
 import { ThemeProvider } from 'styled-components';
 import { SWRConfig, SWRConfiguration } from 'swr';
@@ -69,6 +69,16 @@ function App({
               showOnShallow={false}
             />
             {getLayout(<Component {...pageProps} />)}
+            <ToastContainer
+              position="top-right"
+              autoClose={8000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              draggable={false}
+              pauseOnVisibilityChange
+              closeOnClick
+              pauseOnHover
+            />
           </SessionProvider>
         </SWRConfig>
       </ThemeProvider>

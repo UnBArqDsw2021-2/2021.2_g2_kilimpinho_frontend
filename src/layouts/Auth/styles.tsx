@@ -5,7 +5,7 @@ export const AuthContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: ${theme.spacings.medium};
+    align-items: center;
     min-height: 100vh;
     padding: ${theme.spacings.large};
     background-color: ${theme.colors.lightGray};

@@ -7,20 +7,18 @@ import { Input, PasswordInput } from '@/components/FormFields';
 import React, { useCallback } from 'react';
 import InputMask from 'react-input-mask';
 import GridLayout from 'UI/GridLayout';
-export interface FormValues {
-  name: string;
-  surname: string;
-  phone: string;
-  cpf: string;
-  address: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { signup } from '@/services/userService';
+import { ISignup } from '@/types/user';
 
 export const SignUpForm = () => {
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  const onSubmit = async (data: ISignup) => {
+    try {
+      const { cpf, email, name, password } = data;
+      await signup({ cpf, email, name, password });
+      router.push('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
   const router = useRouter();
 
@@ -30,24 +28,24 @@ export const SignUpForm = () => {
     formState: { errors, isSubmitting },
     watch,
     control,
-  } = useForm<FormValues>();
+  } = useForm<ISignup>();
 
   const theme = useTheme();
-  const renderPhone = useCallback(
-    ({ field: { value, onChange } }) => (
-      <InputMask mask="(99) 99999-99999" value={value} onChange={onChange}>
-        {() => (
-          <Input
-            label="Telefone"
-            name="phone"
-            errors={errors?.phone}
-            value={value}
-          />
-        )}
-      </InputMask>
-    ),
-    [errors?.phone]
-  );
+  // const renderPhone = useCallback(
+  //   ({ field: { value, onChange } }) => (
+  //     <InputMask mask="(99) 99999-99999" value={value} onChange={onChange}>
+  //       {() => (
+  //         <Input
+  //           label="Telefone"
+  //           name="phone"
+  //           errors={errors?.phone}
+  //           value={value}
+  //         />
+  //       )}
+  //     </InputMask>
+  //   ),
+  //   [errors?.phone]
+  // );
 
   const renderCpf = useCallback(
     ({ field: { value, onChange, ref } }) => (
@@ -85,20 +83,20 @@ export const SignUpForm = () => {
                 label="Nome"
                 errors={errors?.name}
               />
-              <Input
+              {/* <Input
                 {...register('surname', {
                   required: 'Sobrenome é obrigatório',
                 })}
                 label="Sobrenome"
                 errors={errors?.surname}
-              />
-              <Controller
+              /> */}
+              {/* <Controller
                 name="phone"
                 control={control}
                 rules={{ required: 'Telefone é obrigatório' }}
                 defaultValue=""
                 render={renderPhone}
-              />
+              /> */}
               <Controller
                 name="cpf"
                 control={control}
@@ -109,13 +107,13 @@ export const SignUpForm = () => {
             </>
           )}
         </GridLayout>
-        <Input
+        {/* <Input
           {...register('address', {
             required: 'Endereço é obrigatório',
           })}
           label="Endereço"
           errors={errors?.address}
-        />
+        /> */}
         <GridLayout columnsAmount={2} gap="0 1rem">
           {() => (
             <>

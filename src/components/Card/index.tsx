@@ -17,6 +17,7 @@ export const Card = styled(Box)<CardStyleProps>`
     gap = 0,
   }) => css`
     border-radius: ${theme.border.radius};
+    height: fit-content;
     background-color: ${theme.colors[
       backgroundColor as keyof DefaultTheme['colors']
     ]};

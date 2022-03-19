@@ -20,7 +20,7 @@ export const SideMenu = ({ children }: MenuProps) => {
         ></Image>
       </Flex>
       <Divider marginBottom="1rem" />
-      <Flex flexDirection="column" paddingBottom="1rem">
+      <Flex flexDirection="column" paddingBottom="1rem" height="fit-content">
         {children}
       </Flex>
       <Divider marginBottom="1rem" />
