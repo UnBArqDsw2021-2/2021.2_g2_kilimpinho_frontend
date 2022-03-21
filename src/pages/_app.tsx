@@ -75,7 +75,7 @@ function App({
               hideProgressBar={false}
               newestOnTop={false}
               draggable={false}
-              pauseOnVisibilityChange
+              pauseOnFocusLoss
               closeOnClick
               pauseOnHover
             />

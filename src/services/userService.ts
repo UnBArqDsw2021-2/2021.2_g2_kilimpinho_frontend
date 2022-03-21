@@ -1,10 +1,23 @@
-import { ISignup } from './../types/user';
 import { api } from '@/services/api';
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
 // TODO
-export const signin = () => {};
+export const signin = async (credentials: ISignin) => {
+  try {
+    const user = await api.post<{ token: string; user: IUser }>(
+      '/auth/login',
+      credentials
+    );
+
+    console;
+    console.log('UUUU', user?.data);
+    return user?.data;
+  } catch (err) {
+    const error = err as AxiosError;
+    throw new Error(error.response?.data);
+  }
+};
 
 export const signup = async (userData: ISignup) => {
   try {

@@ -68,6 +68,14 @@ export const Button = styled.button<IButtonStyleProps>`
     transition: all 0.2s;
     transition: background 0.5s;
 
+    &:disabled {
+      background: ${theme.colors.darkGray400};
+      border: 0;
+      color: ${theme.colors.darkGray400};
+      box-shadow: none;
+      pointer-events: none;
+    }
+
     ${size && buttonStylesModifiers(theme).color[color]};
     ${size && buttonStylesModifiers(theme).size[size]};
     ${fullWidth && buttonStylesModifiers(theme).fullWidth};

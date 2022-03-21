@@ -8,14 +8,13 @@ import React, { useCallback } from 'react';
 import InputMask from 'react-input-mask';
 import GridLayout from 'UI/GridLayout';
 import { signup } from '@/services/userService';
-import { ISignup } from '@/types/user';
 
 export const SignUpForm = () => {
   const onSubmit = async (data: ISignup) => {
     try {
       const { cpf, email, name, password } = data;
       await signup({ cpf, email, name, password });
-      router.push('/');
+      router.push('/login');
     } catch (error) {
       console.log(error);
     }

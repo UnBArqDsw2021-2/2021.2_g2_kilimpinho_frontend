@@ -5,27 +5,28 @@ import { Button } from '@/components/Button';
 import { Input, PasswordInput } from '@/components/FormFields';
 import React from 'react';
 import Link from 'next/link';
-export interface FormValues {
-  name: string;
-  surname: string;
-  phone: string;
-  cpf: string;
-  address: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
+import { signIn } from 'next-auth/react';
+import { toast } from 'react-toastify';
 
 export const SigninForm = () => {
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  const onSubmit = (credentials: ISignin) => {
+    try {
+      signIn('credentials', {
+        ...credentials,
+        redirect: false, // prevents page reload on error
+        callbackUrl: '/dashboard',
+      });
+      toast.success('Seja bem vindo');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<FormValues>();
+  } = useForm<ISignin>();
 
   const theme = useTheme();
 

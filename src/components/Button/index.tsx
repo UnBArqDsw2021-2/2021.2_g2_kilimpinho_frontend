@@ -15,7 +15,7 @@ export interface IButtonProps extends ButtonTypes {
   isLoading: boolean;
 }
 
-export const Button = ({ children, ...props }: IButtonProps) => {
+export const Button = ({ children, isLoading, ...props }: IButtonProps) => {
   const {
     color = 'primary',
     size = 'regular',
@@ -23,9 +23,7 @@ export const Button = ({ children, ...props }: IButtonProps) => {
     shadow = true,
     fullWidth,
     minimal,
-    isLoading,
   } = props;
-
   return (
     <S.Button
       type="button"
@@ -36,8 +34,9 @@ export const Button = ({ children, ...props }: IButtonProps) => {
       fullWidth={fullWidth}
       minimal={minimal}
       {...props}
+      disabled={isLoading}
     >
-      {isLoading ? <div>loading</div> : <span>{children}</span>}
+      <span>{children}</span>
     </S.Button>
   );
 };
