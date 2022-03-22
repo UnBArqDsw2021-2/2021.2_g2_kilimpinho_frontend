@@ -1,5 +1,3 @@
-# RepositorioTemplate
-
 # Ki-Limpinho 💦🚗
 
 ![logo](public/imgs/logoRodas.svg)
@@ -28,33 +26,10 @@ Você trabalhou a semana toda e decide fazer aquela viagem no sábado que tanto 
 
 É por isso que a Ki-limpinho fornece uma aplicação web que ajuda ao cliente no monitoramento do veículo e ao gerente na organização do lava-jato e gerência das finanças. Com ela, o cliente consegue manter contato com o lava-jato e acompanhar o status do carro, já o gerente pode visualizar dashboards, planilhas, etc. que fornece a liquidez mensal e entre outros fatores importantes para a gestão do lava-jato.
 
-## Sobre
-
-Descreva o seu projeto em linhas gerais.
-
-## Screenshots Primeira Entrega <<FOCO: DSW(Base)>>
-
-Adicione 2 ou mais screenshots do projeto em termos de artefatos da Primeira Entrega.
-
-## Vídeo(s) Primeira Entrega <<FOCO: DSW(Base)>>
-
-Adicione o(s)s vídeo(s) da Primeira Entrega.
-
-## Screenshots Segunda Entrega <<FOCO: DSW(Modelagem)>>
-
-Adicione 2 ou mais screenshots do projeto em termos de artefatos da Segunda Entrega.
-
-## Vídeo(s) Segunda Entrega <<FOCO: DSW(Modelagem)>>
-
-Adicione o(s)s vídeo(s) da Segunda Entrega.
-
 ## Screenshots Terceira Entrega <<FOCO: DSW(Padrões de Projeto)>>
 
-Adicione 2 ou mais screenshots do projeto em termos de artefatos da Terceira Entrega.
-
-## Vídeo(s) Terceira Entrega <<FOCO: DSW(Padrões de Projeto)>>
-
-Adicione o(s)s vídeo(s) da Terceira Entrega.
+<img src='public/imgs/entregas/cadastro.png' />
+<img src='public/imgs/entregas/login.png' />
 
 ## Screenshots Quarta Entrega (FINAL) <<FOCOS: Arquitetura & Reutilização de Software & PROJETO FINAL>>
 
@@ -73,9 +48,19 @@ Adicione o(s)s vídeo(s) da Entrega Final.
 
 ## O Projeto está rodando?
 
-( ) SIM
+(X) SIM
 ( ) NÃO
 Se SIM, insira um manual (ou um script) para auxiliar ainda mais os interessados em consultar o projeto.
+
+### Como rodar o projeto
+
+```
+cd 2021.2_g2_kilimpinho_frontend/
+
+yarn
+
+yarn dev
+```
 
 ## Informações Complementares
 
