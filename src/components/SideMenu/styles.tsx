@@ -18,6 +18,9 @@ export const MenuWrapper = styled.div`
 const activeNavItem = css`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
+    background: rgba(100, 150, 250, 0.1);
+    border-radius: 5px;
+    padding: 1px ${theme.spacings.tiny};
     font-weight: ${theme.font.weights.semiBold};
   `}
 `;

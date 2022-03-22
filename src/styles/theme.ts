@@ -30,6 +30,7 @@ export const theme = {
     black: '#202020',
     primary: '#6998F6',
     primaryTint: '#53B6E0',
+    primaryStronger: '#6496FA',
     primaryShade: '#AFFEF9',
     secondary: '#8735FC',
     white: '#FFFFFF',
