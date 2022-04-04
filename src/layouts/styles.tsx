@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const AuthContainer = styled.div`
+export const LayouyContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: row;
