@@ -79,14 +79,17 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
           return token;
         }
 
+        console.log(user);
+
         if (user) {
-          token.user = user;
+          token.user = { ...user };
         }
 
         return token;
       },
       session: async ({ session, token }: { session: Session; token: any }) => {
-        session.user = token.user;
+        console.log(token);
+        session.user = token.user.user;
         session.token = token;
 
         return session;

@@ -1,8 +1,8 @@
 import { ReactElement, useCallback, useState } from 'react';
 import { GetStaticProps } from 'next';
-import { AuthLayout } from 'layouts/Auth';
+import { BaseLayout } from 'layouts/Base';
 import { NextPageWithLayout } from '@/types/next-page';
-import { SignUpForm } from '@/components/SignupForm';
+import { ProfileForm } from '@/components/ProfileForm';
 import { Box, Flex } from 'reflexbox';
 import { useTheme } from 'styled-components';
 import { Divider } from '@/components/Divider';
@@ -11,13 +11,12 @@ const Auth: NextPageWithLayout = () => {
   const theme = useTheme();
 
   return (
-    <AuthLayout
+    <BaseLayout
       header={
         <>
           {
             <Flex flexDirection="column" style={{ gap: '0.8rem' }}>
-              <h2>Cadastre-se</h2>
-              <p>É fácil, rápido, e o melhor, grátis</p>
+              <h2>Alterar dados</h2>
             </Flex>
           }
           <Divider
@@ -28,8 +27,8 @@ const Auth: NextPageWithLayout = () => {
         </>
       }
     >
-      <SignUpForm />
-    </AuthLayout>
+      <ProfileForm />
+    </BaseLayout>
   );
 };
 

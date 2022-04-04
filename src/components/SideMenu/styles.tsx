@@ -12,6 +12,8 @@ export const MenuWrapper = styled.div`
     padding-bottom: ${theme.spacings.medium};
     padding-top: ${theme.spacings.tiny};
     box-shadow: ${theme.shadows.hard};
+    max-width: 220px;
+    word-break: break-all;
   `}
 `;
 
@@ -31,7 +33,7 @@ export const SideMenuItem = styled.a<{
   ${({ isActive, theme }) => css`
     display: inline-flex;
     align-items: center;
-    font-size: 18px;
+    font-size: ${theme.font.sizes.regular};
     width: 100%;
     font-weight: ${theme.font.weights.medium};
     cursor: pointer;

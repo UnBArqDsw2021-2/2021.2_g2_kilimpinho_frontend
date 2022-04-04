@@ -7,16 +7,19 @@ import React from 'react';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 export const SigninForm = () => {
+  const router = useRouter();
   const onSubmit = (credentials: ISignin) => {
     try {
       signIn('credentials', {
         ...credentials,
         redirect: false, // prevents page reload on error
-        callbackUrl: '/dashboard',
+        callbackUrl: '/configuracoes',
       });
       toast.success('Seja bem vindo');
+      router.push('/configuracoes');
     } catch (error) {
       console.log(error);
     }

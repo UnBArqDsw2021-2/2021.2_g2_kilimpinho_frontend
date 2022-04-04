@@ -3,12 +3,15 @@ import { Flex } from 'reflexbox';
 import Image from 'next/image';
 import * as S from './styles';
 import { Divider } from '@/components/Divider';
+import { useSession } from 'next-auth/react';
 
 export interface MenuProps {
   children: string[] | JSX.Element[];
 }
 
 export const SideMenu = ({ children }: MenuProps) => {
+  const { data: session } = useSession();
+
   return (
     <S.MenuWrapper>
       <Flex>
@@ -24,6 +27,7 @@ export const SideMenu = ({ children }: MenuProps) => {
         {children}
       </Flex>
       <Divider marginBottom="1rem" />
+      <strong>{session?.user?.name}</strong>
     </S.MenuWrapper>
   );
 };

@@ -29,3 +29,14 @@ export const signup = async (userData: ISignup) => {
     throw new Error(error.response?.data);
   }
 };
+
+export const updateProfile = async (userData: ISignup) => {
+  try {
+    const user = await api.post('/users', userData);
+    toast.success('Seus dados foram alterados com sucesso');
+    return user;
+  } catch (err) {
+    const error = err as AxiosError;
+    throw new Error(error.response?.data);
+  }
+};
