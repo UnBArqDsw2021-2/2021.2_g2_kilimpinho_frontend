@@ -20,6 +20,8 @@
       "@/types/*": ["types/*"],
       "@/services/*": ["services/*"], 
       "@/UI/*": ["UI/*"], 
+      "@/utils/*": ["utils/*"], 
+      "@/hooks/*": ["hooks/*"], 
       
     }
   },
