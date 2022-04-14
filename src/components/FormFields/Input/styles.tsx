@@ -16,6 +16,10 @@ export const InputContainer = styled.div<{ marginBottom?: number }>`
       ? `calc(${marginBottom}px + ${theme.spacings.medium})`
       : theme.spacings.medium};
   `}
+
+  textarea {
+    min-height: 150px;
+  }
 `;
 
 export const InputGroup = styled.div`
@@ -72,6 +76,7 @@ export const Input = styled.input<InputStyles>`
     padding-right: ${iconWidth ? `calc(${iconWidth}px + 10px)` : "0"};
     background: transparent;
     transition: all 0.15s ease-out, border-color 0.25s;
+    resize: none;
 
     &::placeholder {
       color: transparent;
