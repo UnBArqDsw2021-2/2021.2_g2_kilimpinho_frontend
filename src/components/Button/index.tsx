@@ -1,24 +1,24 @@
-import { ButtonHTMLAttributes, MouseEvent } from 'react';
+import { ButtonHTMLAttributes, MouseEvent } from "react";
 
-import * as S from './styles';
+import * as S from "./styles";
 
 type ButtonTypes = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export interface IButtonProps extends ButtonTypes {
-  size?: 'small' | 'regular' | 'large';
-  color?: 'primary' | 'secondary' | 'black';
+  size?: "small" | "regular" | "large";
+  color?: "primary" | "secondary" | "black";
   shadow?: boolean;
   fullWidth?: boolean;
   minimal?: boolean;
   icon?: JSX.Element;
   as?: React.ElementType;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 export const Button = ({ children, isLoading, ...props }: IButtonProps) => {
   const {
-    color = 'primary',
-    size = 'regular',
+    color = "primary",
+    size = "regular",
     icon,
     shadow = true,
     fullWidth,

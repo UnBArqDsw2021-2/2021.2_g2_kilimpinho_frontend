@@ -3,8 +3,8 @@ export const theme = {
     radius: '8px',
   },
   font: {
-    family: 'Roboto, Poppins, sans-serif',
-    bodyFamily: 'Roboto, sans-serif',
+    family: 'Poppins, Roboto, , sans-serif',
+    bodyFamily: 'Poppins, Roboto, sans-serif',
     weights: {
       light: 300,
       regular: 400,
@@ -32,7 +32,8 @@ export const theme = {
     primaryTint: '#53B6E0',
     primaryStronger: '#6496FA',
     primaryShade: '#AFFEF9',
-    secondary: '#8735FC',
+    secondary: '#544FE3',
+    secondaryTint: '#8735FC',
     white: '#FFFFFF',
     white100: '#FAFAFA',
     black100: '#111',
