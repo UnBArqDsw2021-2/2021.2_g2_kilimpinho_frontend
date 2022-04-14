@@ -1,7 +1,7 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from "styled-components";
 
 export interface InputStyles {
-  color?: 'white' | 'black';
+  color?: "white" | "black";
   error?: boolean;
   iconWidth?: number;
 }
@@ -38,14 +38,14 @@ export const Label = styled.label<InputStyles>`
 
 export const Icon = styled.div<{
   isClickable: boolean;
-  color?: keyof DefaultTheme['colors'];
+  color?: keyof DefaultTheme["colors"];
 }>`
-  ${({ theme, isClickable, color = 'primary' }) => css`
+  ${({ theme, isClickable, color = "primary" }) => css`
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 40px;
+    bottom: 10px;
     right: 8px;
     color: ${theme.colors[color]};
 
@@ -60,7 +60,7 @@ export const Icon = styled.div<{
 `;
 
 export const Input = styled.input<InputStyles>`
-  ${({ theme, color = 'black', error, iconWidth }) => css`
+  ${({ theme, color = "black", error, iconWidth }) => css`
     font-family: inherit;
     width: 100%;
     border: 0;
@@ -69,7 +69,7 @@ export const Input = styled.input<InputStyles>`
     outline: 0;
     color: ${theme.colors[color]};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.tiny};
-    padding-right: ${iconWidth ? `calc(${iconWidth}px + 10px)` : '0'};
+    padding-right: ${iconWidth ? `calc(${iconWidth}px + 10px)` : "0"};
     background: transparent;
     transition: all 0.15s ease-out, border-color 0.25s;
 
@@ -86,7 +86,7 @@ export const Input = styled.input<InputStyles>`
     &:-webkit-autofill,
     textarea:-webkit-autofill,
     select:-webkit-autofill {
-      ${color === 'white'
+      ${color === "white"
         ? css`
             -webkit-box-shadow: 0 0 0 1000px ${theme.colors.darkGray} inset !important;
             -webkit-text-fill-color: white !important;
@@ -116,7 +116,7 @@ export const Input = styled.input<InputStyles>`
     &:disabled {
       pointer-events: none;
       background: ${theme.colors.lightGray};
-      ${color === 'white' &&
+      ${color === "white" &&
       css`
         background: ${theme.colors.darkGray100};
         border: 1px solid ${theme.colors.darkGray200};
