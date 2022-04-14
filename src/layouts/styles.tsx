@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const LayouyContainer = styled.div`
+export const LayoutContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: ${theme.spacings.huge};

@@ -12,7 +12,7 @@ import { Button } from "@/components/Button";
 export const HomeLayout = () => {
   const theme = useTheme();
   return (
-    <S.LayouyContainer>
+    <S.LayoutContainer>
       <SideMenu>
         <MenuItem pathname="/" icon={<AiOutlineHome />}>
           Home
@@ -75,6 +75,6 @@ export const HomeLayout = () => {
           />
         </S.BottomContainer>
       </Flex>
-    </S.LayouyContainer>
+    </S.LayoutContainer>
   );
 };

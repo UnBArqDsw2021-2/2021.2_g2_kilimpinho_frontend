@@ -1,12 +1,15 @@
 import { Card } from "@/components/Card";
 import { SideMenu } from "@/components/SideMenu";
 import { MenuItem } from "@/components/SideMenu/MenuItem";
+import { SideMenuItem } from "@/components/SideMenu/styles";
 import { Box, Flex } from "reflexbox";
 import { useTheme } from "styled-components";
-import { BsTelephone } from "react-icons/bs";
+import { AiOutlineHome } from "react-icons/ai";
+import { BsBoxArrowInRight } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BiCar } from "react-icons/bi";
-import * as S from "../styles";
+import { MdOutlineDashboard } from "react-icons/md";
+import * as S from "./styles";
 
 export type AuthTemplateProps = {
   children: React.ReactNode;
@@ -14,18 +17,19 @@ export type AuthTemplateProps = {
   footer?: React.ReactNode;
 };
 
-export const BaseLayout = ({ children, header }: AuthTemplateProps) => {
+export const AdminLayout = ({ children, header }: AuthTemplateProps) => {
   const theme = useTheme();
 
   return (
-    <S.LayoutContainer>
+    <S.AdminLayoutContainer>
       <Flex style={{ gap: theme.spacings.medium }}>
         <SideMenu>
+          <MenuItem pathname="/lavagem" icon={<MdOutlineDashboard />}>
+            Dashboard
+          </MenuItem>
+
           <MenuItem pathname="/lavagem" icon={<BiCar />}>
             Lavagem
-          </MenuItem>
-          <MenuItem pathname="/faq" icon={<BsTelephone />}>
-            FAQ
           </MenuItem>
           <MenuItem pathname="/configuracoes" icon={<AiOutlineSetting />}>
             Configurações
@@ -45,6 +49,6 @@ export const BaseLayout = ({ children, header }: AuthTemplateProps) => {
           {children}
         </Card>
       </Flex>
-    </S.LayoutContainer>
+    </S.AdminLayoutContainer>
   );
 };
