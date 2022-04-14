@@ -1,20 +1,20 @@
-import { useRouter } from 'next/router';
-import { Controller, useForm } from 'react-hook-form';
-import { Flex } from 'reflexbox';
-import { useTheme } from 'styled-components';
-import { Button } from '@/components/Button';
-import { Input, PasswordInput } from '@/components/FormFields';
-import React, { useCallback } from 'react';
-import InputMask from 'react-input-mask';
-import GridLayout from 'UI/GridLayout';
-import { signup } from '@/services/userService';
+import { useRouter } from "next/router";
+import { Controller, useForm } from "react-hook-form";
+import { Flex } from "reflexbox";
+import { useTheme } from "styled-components";
+import { Button } from "@/components/Button";
+import { Input, PasswordInput } from "@/components/FormFields";
+import React, { useCallback } from "react";
+import InputMask from "react-input-mask";
+import GridLayout from "UI/GridLayout";
+import { signup } from "@/services/userService";
 
 export const SignUpForm = () => {
   const onSubmit = async (data: ISignup) => {
     try {
       const { cpf, email, name, password } = data;
       await signup({ cpf, email, name, password });
-      router.push('/login');
+      router.push("/login");
     } catch (error) {
       console.log(error);
     }
@@ -66,8 +66,8 @@ export const SignUpForm = () => {
     <Flex flexDirection="column">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
-          {...register('email', {
-            required: 'Email é obrigatório',
+          {...register("email", {
+            required: "Email é obrigatório",
           })}
           label="Email"
           errors={errors?.email}
@@ -76,8 +76,8 @@ export const SignUpForm = () => {
           {() => (
             <>
               <Input
-                {...register('name', {
-                  required: 'Nome é obrigatório',
+                {...register("name", {
+                  required: "Nome é obrigatório",
                 })}
                 label="Nome"
                 errors={errors?.name}
@@ -99,7 +99,7 @@ export const SignUpForm = () => {
               <Controller
                 name="cpf"
                 control={control}
-                rules={{ required: 'CPF é obrigatório' }}
+                rules={{ required: "CPF é obrigatório" }}
                 defaultValue=""
                 render={renderCpf}
               />
@@ -117,20 +117,20 @@ export const SignUpForm = () => {
           {() => (
             <>
               <PasswordInput
-                {...register('password', {
+                {...register("password", {
                   minLength: {
                     value: 6,
-                    message: 'Senha precisa de no minímo 6 caracteres',
+                    message: "Senha precisa de no minímo 6 caracteres",
                   },
-                  required: 'Senha é obrigatória',
+                  required: "Senha é obrigatória",
                 })}
                 label="Senha"
                 errors={errors?.password}
               />
               <PasswordInput
-                {...register('confirmPassword', {
+                {...register("confirmPassword", {
                   validate: (value) =>
-                    value === watch('password') || 'As senhas não são iguais',
+                    value === watch("password") || "As senhas não são iguais",
                 })}
                 errors={errors?.confirmPassword}
                 label="Confirmar senha"
