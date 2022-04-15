@@ -13,3 +13,8 @@ interface ISignin {
   email: string;
   password: string;
 }
+
+interface Avaliation {
+  stars: number;
+  avaliationText: string;
+}
