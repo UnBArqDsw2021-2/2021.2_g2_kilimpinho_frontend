@@ -29,3 +29,13 @@ export const signup = async (userData: ISignup) => {
     throw new Error(error.response?.data);
   }
 };
+
+export const avaliation = async (userData: Avaliation) => {
+  try {
+    console.log("TODO")
+    
+  } catch (err) {
+    const error = err as AxiosError;
+    throw new Error(error.response?.data);
+  }
+};
