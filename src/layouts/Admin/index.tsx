@@ -6,8 +6,10 @@ import { Box, Flex } from "reflexbox";
 import { useTheme } from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
 import { BsBoxArrowInRight } from "react-icons/bs";
+import { AiOutlineSetting } from "react-icons/ai";
+import { BiCar } from "react-icons/bi";
 import { MdOutlineDashboard } from "react-icons/md";
-import * as S from "../styles";
+import * as S from "./styles";
 
 export type AuthTemplateProps = {
   children: React.ReactNode;
@@ -15,24 +17,22 @@ export type AuthTemplateProps = {
   footer?: React.ReactNode;
 };
 
-export const AuthLayout = ({ children, header, footer }: AuthTemplateProps) => {
+export const AdminLayout = ({ children, header }: AuthTemplateProps) => {
   const theme = useTheme();
 
   return (
-    <S.LayoutContainer>
+    <S.AdminLayoutContainer>
       <Flex style={{ gap: theme.spacings.medium }}>
         <SideMenu>
-          <MenuItem pathname="/" icon={<AiOutlineHome />}>
-            Home
+          <MenuItem pathname="/lavagem" icon={<MdOutlineDashboard />}>
+            Dashboard
           </MenuItem>
-          <MenuItem pathname="/sobre" icon={<MdOutlineDashboard />}>
-            Sobre
+
+          <MenuItem pathname="/lavagem" icon={<BiCar />}>
+            Lavagem
           </MenuItem>
-          <MenuItem pathname="/login" icon={<BsBoxArrowInRight />}>
-            Login
-          </MenuItem>
-          <MenuItem pathname="/cadastro" icon={<BsBoxArrowInRight />}>
-            Cadastro
+          <MenuItem pathname="/configuracoes" icon={<AiOutlineSetting />}>
+            Configurações
           </MenuItem>
         </SideMenu>
         <Card
@@ -49,6 +49,6 @@ export const AuthLayout = ({ children, header, footer }: AuthTemplateProps) => {
           {children}
         </Card>
       </Flex>
-    </S.LayoutContainer>
+    </S.AdminLayoutContainer>
   );
 };

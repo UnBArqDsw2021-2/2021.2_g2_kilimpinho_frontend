@@ -1,6 +1,6 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from "styled-components";
 
-import type { IButtonProps } from '.';
+import type { IButtonProps } from ".";
 
 export type IButtonStyleProps = IButtonProps;
 
@@ -26,7 +26,10 @@ const buttonStylesModifiers = (theme: DefaultTheme) => ({
       }
     `,
     secondary: css`
-      background-color: ${theme.colors.secondary};
+      background-color: ${theme.colors.secondaryTint};
+      &:hover {
+        background-color: ${theme.colors.secondary};
+      }
     `,
     black: css`
       background-color: ${theme.colors.black};
@@ -41,7 +44,7 @@ const buttonStylesModifiers = (theme: DefaultTheme) => ({
 });
 
 export const Button = styled.button<IButtonStyleProps>`
-  ${({ theme, size, color = 'primary', shadow, fullWidth }) => css`
+  ${({ theme, size, color = "primary", shadow, fullWidth }) => css`
     position: relative;
     display: inline-flex;
     align-items: center;

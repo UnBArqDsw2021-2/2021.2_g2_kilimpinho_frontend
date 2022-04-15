@@ -1,12 +1,11 @@
 import { Card } from "@/components/Card";
 import { SideMenu } from "@/components/SideMenu";
 import { MenuItem } from "@/components/SideMenu/MenuItem";
-import { SideMenuItem } from "@/components/SideMenu/styles";
 import { Box, Flex } from "reflexbox";
 import { useTheme } from "styled-components";
-import { AiOutlineHome } from "react-icons/ai";
-import { BsBoxArrowInRight } from "react-icons/bs";
-import { MdOutlineDashboard } from "react-icons/md";
+import { BsTelephone } from "react-icons/bs";
+import { AiOutlineSetting } from "react-icons/ai";
+import { BiCar } from "react-icons/bi";
 import * as S from "../styles";
 
 export type AuthTemplateProps = {
@@ -15,24 +14,21 @@ export type AuthTemplateProps = {
   footer?: React.ReactNode;
 };
 
-export const AuthLayout = ({ children, header, footer }: AuthTemplateProps) => {
+export const BaseLayout = ({ children, header }: AuthTemplateProps) => {
   const theme = useTheme();
 
   return (
     <S.LayoutContainer>
       <Flex style={{ gap: theme.spacings.medium }}>
         <SideMenu>
-          <MenuItem pathname="/" icon={<AiOutlineHome />}>
-            Home
+          <MenuItem pathname="/lavagem" icon={<BiCar />}>
+            Lavagem
           </MenuItem>
-          <MenuItem pathname="/sobre" icon={<MdOutlineDashboard />}>
-            Sobre
+          <MenuItem pathname="/faq" icon={<BsTelephone />}>
+            FAQ
           </MenuItem>
-          <MenuItem pathname="/login" icon={<BsBoxArrowInRight />}>
-            Login
-          </MenuItem>
-          <MenuItem pathname="/cadastro" icon={<BsBoxArrowInRight />}>
-            Cadastro
+          <MenuItem pathname="/configuracoes" icon={<AiOutlineSetting />}>
+            Configurações
           </MenuItem>
         </SideMenu>
         <Card
