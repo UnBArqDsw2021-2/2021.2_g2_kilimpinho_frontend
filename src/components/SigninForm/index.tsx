@@ -21,7 +21,7 @@ export const SigninForm = () => {
 
       if (response?.ok) {
         toast.success("Seja bem vindo");
-        router.push("/configuracoes");
+        router.push("/despesas");
       } else {
         toast.error(response?.error);
       }

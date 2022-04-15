@@ -31,7 +31,6 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
               password: credentials?.password!,
             });
 
-            console.log("DSAAAAAAAAAAAAAAA", user);
             const accessToken = user?.token;
             if (accessToken && user?.user?.email) {
               res.setHeader(
@@ -79,8 +78,6 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         if (token?.user) {
           return token;
         }
-
-        console.log(user);
 
         if (user) {
           token.user = { ...user };

@@ -8,9 +8,12 @@ import { MdOutlineDashboard } from "react-icons/md";
 import * as S from "../styles";
 import Image from "next/image";
 import { Button } from "@/components/Button";
+import { useRouter } from "next/router";
 
 export const HomeLayout = () => {
   const theme = useTheme();
+
+  const router = useRouter();
   return (
     <S.LayoutContainer>
       <SideMenu>
@@ -35,7 +38,10 @@ export const HomeLayout = () => {
               Deixa de estresse, com a Ki-limpinho você sai de casa com horário
               marcado no lava-jato mais próximo de você
             </p>
-            <Button color="secondary">CADASTRE-SE</Button>
+
+            <Button color="secondary" onClick={() => router.push("/cadastro")}>
+              CADASTRE-SE
+            </Button>
           </Flex>
           <Image
             src="/imgs/group.svg"

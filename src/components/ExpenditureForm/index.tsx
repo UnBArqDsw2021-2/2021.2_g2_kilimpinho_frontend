@@ -10,15 +10,17 @@ import { registerExpenditure } from "@/services/expenditureService";
 import { toast } from "react-toastify";
 import { CurrencyInput } from "../FormFields/CurrencyInput";
 import { Checkbox } from "../FormFields/Checkbox";
+import { ExpenditureAdapter } from "adapters/expenditureAdapter";
 
 export const ExpenditureForm = () => {
   const onSubmit = async (data: IExpenditure) => {
     try {
-      await registerExpenditure(data);
+      const expenditure = new ExpenditureAdapter(data);
 
+      expenditure.addNewExpenditure();
       toast.success("Despesa cadastrada com sucesso");
     } catch (error) {
-      toast.error("Erro ao criar despesas");
+      console.log(error);
     }
   };
   const router = useRouter();
@@ -48,6 +50,20 @@ export const ExpenditureForm = () => {
     ),
     [errors?.title]
   );
+
+  const renderAmount = useCallback(
+    ({ field: { value, onChange } }) => (
+      <CurrencyInput
+        value={value}
+        onChange={onChange}
+        name="amount"
+        label="Valor"
+        errors={errors?.amount}
+      />
+    ),
+    [errors?.title]
+  );
+
   return (
     <Flex flexDirection="column">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,12 +76,11 @@ export const ExpenditureForm = () => {
             errors={errors?.title}
           />
 
-          <CurrencyInput
-            {...register("amount", {
-              required: "Valor é obrigatório",
-            })}
-            label="Valor"
-            errors={errors?.amount}
+          <Controller
+            render={renderAmount}
+            name="amount"
+            control={control}
+            rules={{ required: "Valor é obrigatória" }}
           />
           <Controller
             render={renderDate}
@@ -78,7 +93,7 @@ export const ExpenditureForm = () => {
           {...register("description", {
             required: "Descrição é obrigatório",
           })}
-          label="Titulo"
+          label="Observações"
           type="textarea"
           errors={errors?.title}
         />

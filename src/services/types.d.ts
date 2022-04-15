@@ -3,5 +3,5 @@ interface IExpenditure {
   description: string;
   amount: number;
   isFixed: boolean;
-  date: Date;
+  date: Date | string;
 }
