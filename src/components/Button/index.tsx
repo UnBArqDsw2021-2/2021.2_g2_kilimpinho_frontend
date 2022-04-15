@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes, MouseEvent } from "react";
+import { Loader } from "../Loader";
 
 import * as S from "./styles";
 
@@ -36,7 +37,11 @@ export const Button = ({ children, isLoading, ...props }: IButtonProps) => {
       {...props}
       disabled={isLoading}
     >
-      <span>{children}</span>
+      {isLoading ? (
+        <Loader size="small" color="secondary" />
+      ) : (
+        <span>{children}</span>
+      )}
     </S.Button>
   );
 };

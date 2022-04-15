@@ -17,8 +17,9 @@ import { getSession } from "next-auth/react";
 import { CheckisAdmin } from "@/utils/isAdmin";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const isAdmin = CheckisAdmin(context);
+  const isAdmin = await CheckisAdmin(context);
 
+  console.log("TESTE", isAdmin);
   if (!isAdmin) {
     return {
       redirect: {
