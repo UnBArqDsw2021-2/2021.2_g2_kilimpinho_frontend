@@ -7,6 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 import { IoMdExit } from "react-icons/io";
 import { useTheme } from "styled-components";
 import { useRouter } from "next/router";
+import { Box } from "reflexbox";
 export interface MenuProps {
   children: string[] | JSX.Element[];
 }
@@ -18,12 +19,14 @@ export const SideMenu = ({ children }: MenuProps) => {
   return (
     <S.MenuWrapper>
       <Flex>
-        <Image
-          src="/imgs/logo.svg"
-          width="60px"
-          height="60px"
-          layout="fixed"
-        ></Image>
+        <Box onClick={() => router.push("/")} style={{ cursor: "pointer" }}>
+          <Image
+            src="/imgs/logo.svg"
+            width="60px"
+            height="60px"
+            layout="fixed"
+          />
+        </Box>
       </Flex>
       <Divider marginBottom="1rem" />
       <Flex flexDirection="column" paddingBottom="1rem" height="fit-content">

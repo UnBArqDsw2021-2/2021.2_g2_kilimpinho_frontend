@@ -1,26 +1,26 @@
 import { ReactElement } from "react";
-import { AuthLayout } from "layouts/Auth";
-import { NextPageWithLayout } from "@/types/next-page";
-import { Flex } from "reflexbox";
 import { useTheme } from "styled-components";
-import { Divider } from "@/components/Divider";
-import { SigninForm } from "@/components/SigninForm";
-import { Landing } from "@/components/Landing";
-import { SideMenu } from "@/components/SideMenu";
-import { MenuItem } from "@/components/SideMenu/MenuItem";
-import { AiOutlineHome } from "react-icons/ai";
-import { MdOutlineDashboard } from "react-icons/md";
-import { BsBoxArrowInRight } from "react-icons/bs";
 import { HomeLayout } from "layouts/Home";
+import { CheckisAdmin } from "@/utils/isAdmin";
+import { GetServerSidePropsContext } from "next";
+import { getSession } from "next-auth/react";
 
-const Auth: NextPageWithLayout = () => {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getSession(context);
+  const user = session?.user;
+  return {
+    props: { user: user }, // will be passed to the page component as props
+  };
+}
+
+const Home = ({ user }: { user: IUser }) => {
   const theme = useTheme();
 
-  return <HomeLayout />;
+  return <HomeLayout user={user} />;
 };
 
-Auth.getLayout = function getLayout(page: ReactElement) {
+Home.getLayout = function getLayout(page: ReactElement) {
   return page;
 };
 
-export default Auth;
+export default Home;

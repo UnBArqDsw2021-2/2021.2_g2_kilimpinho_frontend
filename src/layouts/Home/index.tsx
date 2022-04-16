@@ -5,31 +5,48 @@ import { useTheme } from "styled-components";
 import { AiOutlineHome } from "react-icons/ai";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { MdOutlineDashboard } from "react-icons/md";
+import { AiOutlineSetting } from "react-icons/ai";
+import { BiCar } from "react-icons/bi";
 import * as S from "../styles";
 import Image from "next/image";
 import { Button } from "@/components/Button";
 import { useRouter } from "next/router";
 
-export const HomeLayout = () => {
+export const HomeLayout = ({ user }: { user: IUser }) => {
   const theme = useTheme();
 
   const router = useRouter();
   return (
     <S.LayoutContainer>
-      <SideMenu>
-        <MenuItem pathname="/" icon={<AiOutlineHome />}>
-          Home
-        </MenuItem>
-        <MenuItem pathname="/sobre" icon={<MdOutlineDashboard />}>
-          Sobre
-        </MenuItem>
-        <MenuItem pathname="/login" icon={<BsBoxArrowInRight />}>
-          Login
-        </MenuItem>
-        <MenuItem pathname="/cadastro" icon={<BsBoxArrowInRight />}>
-          Cadastro
-        </MenuItem>
-      </SideMenu>
+      {!user ? (
+        <SideMenu>
+          <MenuItem pathname="/" icon={<AiOutlineHome />}>
+            Home
+          </MenuItem>
+          <MenuItem pathname="/sobre" icon={<MdOutlineDashboard />}>
+            Sobre
+          </MenuItem>
+          <MenuItem pathname="/login" icon={<BsBoxArrowInRight />}>
+            Login
+          </MenuItem>
+          <MenuItem pathname="/cadastro" icon={<BsBoxArrowInRight />}>
+            Cadastro
+          </MenuItem>
+        </SideMenu>
+      ) : (
+        <SideMenu>
+          <MenuItem pathname="/dashboard" icon={<MdOutlineDashboard />}>
+            Dashboard
+          </MenuItem>
+
+          <MenuItem pathname="/lavagem" icon={<BiCar />}>
+            Lavagem
+          </MenuItem>
+          <MenuItem pathname="/configuracoes" icon={<AiOutlineSetting />}>
+            Configurações
+          </MenuItem>
+        </SideMenu>
+      )}
       <Flex flexDirection="column">
         <S.TopContainer>
           <Flex flexDirection="column" gap={theme.spacings.medium}>

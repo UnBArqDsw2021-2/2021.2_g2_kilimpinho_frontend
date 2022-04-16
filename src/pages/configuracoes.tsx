@@ -1,21 +1,63 @@
-import { ReactElement, useCallback, useState } from 'react';
-import { GetStaticProps } from 'next';
-import { BaseLayout } from 'layouts/Base';
-import { NextPageWithLayout } from '@/types/next-page';
-import { ProfileForm } from '@/components/ProfileForm';
-import { Box, Flex } from 'reflexbox';
-import { useTheme } from 'styled-components';
-import { Divider } from '@/components/Divider';
+import { ReactElement } from "react";
+import { GetServerSidePropsContext } from "next";
+import { BaseLayout } from "layouts/Base";
+import { ProfileForm } from "@/components/ProfileForm";
+import { Flex } from "@/UI/Flex";
+import { useTheme } from "styled-components";
+import { Divider } from "@/components/Divider";
+import { CheckisAdmin } from "@/utils/isAdmin";
+import { AdminLayout } from "layouts/Admin";
 
-const Auth: NextPageWithLayout = () => {
+interface ConfiguracoesProps {
+  isAdmin: boolean;
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const isAdmin = await CheckisAdmin(context);
+
+  if (!isAdmin) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: { isAdmin }, // will be passed to the page component as props
+  };
+}
+
+const Configuracoes = ({ isAdmin }: ConfiguracoesProps) => {
   const theme = useTheme();
-
+  if (isAdmin) {
+    return (
+      <AdminLayout
+        header={
+          <>
+            {
+              <Flex flexDirection="column" style={{ gap: "0.8rem" }}>
+                <h2>Alterar dados</h2>
+              </Flex>
+            }
+            <Divider
+              color={theme.colors.lightGray}
+              marginTop="1rem"
+              height={1}
+            ></Divider>
+          </>
+        }
+      >
+        <ProfileForm />
+      </AdminLayout>
+    );
+  }
   return (
     <BaseLayout
       header={
         <>
           {
-            <Flex flexDirection="column" style={{ gap: '0.8rem' }}>
+            <Flex flexDirection="column" style={{ gap: "0.8rem" }}>
               <h2>Alterar dados</h2>
             </Flex>
           }
@@ -32,8 +74,8 @@ const Auth: NextPageWithLayout = () => {
   );
 };
 
-Auth.getLayout = function getLayout(page: ReactElement) {
+Configuracoes.getLayout = function getLayout(page: ReactElement) {
   return page;
 };
 
-export default Auth;
+export default Configuracoes;

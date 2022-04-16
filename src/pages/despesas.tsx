@@ -1,25 +1,16 @@
-import { ReactElement, useCallback, useState } from "react";
-import {
-  GetServerSideProps,
-  GetServerSidePropsContext,
-  GetServerSidePropsResult,
-  GetStaticProps,
-} from "next";
-import { BaseLayout } from "layouts/Base";
+import { ReactElement } from "react";
+import { GetServerSidePropsContext } from "next";
 import { NextPageWithLayout } from "@/types/next-page";
-import { ProfileForm } from "@/components/ProfileForm";
 import { useTheme } from "styled-components";
 import { Divider } from "@/components/Divider";
 import { AdminLayout } from "layouts/Admin";
 import { ExpenditureForm } from "@/components/ExpenditureForm";
 import { Flex } from "@/UI/Flex";
-import { getSession } from "next-auth/react";
 import { CheckisAdmin } from "@/utils/isAdmin";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const isAdmin = await CheckisAdmin(context);
 
-  console.log("TESTE", isAdmin);
   if (!isAdmin) {
     return {
       redirect: {
@@ -33,7 +24,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   };
 }
 
-const Auth: NextPageWithLayout = () => {
+const Despesas: NextPageWithLayout = () => {
   const theme = useTheme();
 
   return (
@@ -58,8 +49,8 @@ const Auth: NextPageWithLayout = () => {
   );
 };
 
-Auth.getLayout = function getLayout(page: ReactElement) {
+Despesas.getLayout = function getLayout(page: ReactElement) {
   return page;
 };
 
-export default Auth;
+export default Despesas;

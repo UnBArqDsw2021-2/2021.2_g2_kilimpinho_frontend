@@ -1,42 +1,30 @@
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { SessionProvider } from 'next-auth/react';
-import NextNprogress from 'nextjs-progressbar';
-import { toast, ToastContainer } from 'react-toastify';
-import type { NProgressOptions } from 'nprogress';
-import { ThemeProvider } from 'styled-components';
-import { SWRConfig, SWRConfiguration } from 'swr';
-import type { NextPageWithLayout } from '@/types/next-page';
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
+import NextNprogress from "nextjs-progressbar";
+import { toast, ToastContainer } from "react-toastify";
+import type { NProgressOptions } from "nprogress";
+import { ThemeProvider } from "styled-components";
+import { SWRConfig, SWRConfiguration } from "swr";
+import type { NextPageWithLayout } from "@/types/next-page";
 
-import 'react-toastify/dist/ReactToastify.css';
-import { GlobalStyles } from 'styles/globals';
-import { theme } from 'styles/theme';
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalStyles } from "styles/globals";
+import { theme } from "styles/theme";
+import { ChartProvider } from "@/contexts/ChartContext";
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
 const swrConfig: SWRConfiguration = {
-  revalidateOnFocus: process.env.NODE_ENV !== 'development',
+  revalidateOnFocus: process.env.NODE_ENV !== "development",
   shouldRetryOnError: false,
 };
 
 const nextNprogressOptions = {
   showSpinner: false,
 };
-
-toast.configure({
-  autoClose: 4000,
-  position: 'top-right',
-});
-
-toast.configure({
-  position: 'bottom-center',
-  autoClose: false,
-  closeButton: false,
-  enableMultiContainer: true,
-  containerId: 'fetch-error',
-});
 
 function App({
   Component,
@@ -68,7 +56,9 @@ function App({
               options={nextNprogressOptions}
               showOnShallow={false}
             />
-            {getLayout(<Component {...pageProps} />)}
+            <ChartProvider>
+              {getLayout(<Component {...pageProps} />)}
+            </ChartProvider>
             <ToastContainer
               position="top-right"
               autoClose={8000}
