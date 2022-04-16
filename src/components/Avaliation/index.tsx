@@ -31,7 +31,11 @@ export const Avaliation = () => {
         <Flex flexDirection="column">
             <form onSubmit={handleSubmit(onSubmit)}>
                 
-                <Stars/>
+                <Stars
+                    // {...register("stars", {
+                    //     required: "Estrelas são obrigatorias",
+                    // })}
+                />
         
                 <Input
                     {...register("avaliationText", {
