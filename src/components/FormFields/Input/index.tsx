@@ -4,15 +4,15 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { FieldError } from 'react-hook-form';
-import { MdErrorOutline } from 'react-icons/md';
-import { useTheme } from 'styled-components';
+} from "react";
+import { FieldError } from "react-hook-form";
+import { MdErrorOutline } from "react-icons/md";
+import { useTheme } from "styled-components";
 
-import { InputErrorMessage } from '@/components/FormFields/InputErrorMessage';
+import { InputErrorMessage } from "@/components/FormFields/InputErrorMessage";
 
-import type { InputStyles } from './styles';
-import * as S from './styles';
+import type { InputStyles } from "./styles";
+import * as S from "./styles";
 
 type InputAttributes = InputHTMLAttributes<HTMLInputElement> & InputStyles;
 
@@ -33,7 +33,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     label,
     errors,
     icon,
-    color = 'black',
+    color = "black",
     iconIsClickable = false,
   } = props;
 
@@ -51,7 +51,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     setMarginBottom(marginRef?.current?.clientHeight || 0);
   }, [marginRef, errors]);
 
-  const theme = useTheme();
+  const isTextArea = props.type === "textarea";
+  const tag = isTextArea ? "textarea" : "input";
 
   return (
     <S.InputContainer marginBottom={marginBottom}>
@@ -60,6 +61,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           {label}
         </S.Label>
         <S.Input
+          as={tag}
           autoComplete="off"
           id={name}
           ref={ref}

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const MenuWrapper = styled.div`
+export const LandingContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-direction: column;
