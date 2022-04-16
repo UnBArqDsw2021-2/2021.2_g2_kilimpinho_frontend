@@ -7,6 +7,7 @@ import { Box, Flex } from 'reflexbox';
 import { useTheme } from 'styled-components';
 import { Divider } from '@/components/Divider';
 
+
 const Auth: NextPageWithLayout = () => {
   const theme = useTheme();
 
