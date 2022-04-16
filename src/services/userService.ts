@@ -32,8 +32,8 @@ export const signup = async (userData: ISignup) => {
 
 export const avaliation = async (userData: Avaliation) => {
   try {
-    console.log("TODO")
-    
+    console.log(userData)
+
   } catch (err) {
     const error = err as AxiosError;
     throw new Error(error.response?.data);
