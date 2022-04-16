@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { Flex } from 'reflexbox';
 import { useTheme } from 'styled-components';
 import { Button } from '@/components/Button';
-import { Input, PasswordInput, TextBox, Stars } from '@/components/FormFields';
+import { Input, PasswordInput, Stars } from '@/components/FormFields';
 import React, { useCallback } from 'react';
 import InputMask from 'react-input-mask';
 import GridLayout from 'UI/GridLayout';
@@ -11,9 +11,9 @@ import { avaliation } from '@/services/userService';
 
 export const Avaliation = () => {
 
-    const onSubmit = (avaliationData: Avaliation) => {
+    const onSubmit = (data: Avaliation) => {
         try {
-            avaliation(avaliationData);
+            avaliation(data);
         } catch (error) {
             console.log(error);
         }
@@ -33,14 +33,20 @@ export const Avaliation = () => {
                 
                 <Stars/>
         
-                <TextBox
-                {...register('avaliationText')}
-                erros={errors?.avaliationText}
+                <Input
+                    {...register("avaliationText", {
+                        required: "Descrição é obrigatório",
+                    })}
+                    label="Observações"
+                    type="textarea"
+                    errors={errors?.avaliationText}
                 />
 
-                <Button type="submit" isLoading={isSubmitting} size="large">
-                    Enviar
-                </Button>
+                <Flex flexDirection="column" marginTop={theme.spacings.medium}>
+					<Button type="submit" isLoading={isSubmitting} size="large">
+						Enviar
+					</Button>
+				</Flex>
 
             </form>
         </Flex>
