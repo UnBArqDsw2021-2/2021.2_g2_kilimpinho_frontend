@@ -13,7 +13,6 @@ export const MenuWrapper = styled.div`
     padding-top: ${theme.spacings.tiny};
     box-shadow: ${theme.shadows.hard};
     max-width: 220px;
-    word-break: break-all;
   `}
 `;
 
