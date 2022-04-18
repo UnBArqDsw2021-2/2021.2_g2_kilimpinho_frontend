@@ -5,16 +5,22 @@ import { useTheme } from "styled-components";
 import { Button } from "@/components/Button";
 import { Input, PasswordInput } from "@/components/FormFields";
 import React, { useCallback } from "react";
+import { signOut, useSession } from "next-auth/react";
 import GridLayout from "UI/GridLayout";
-import { signup } from "@/services/userService";
-import { ILavagem, IUser } from "@/types/user";
+import { signupLavagem } from "@/services/userService";
+import { ILavagem } from "@/types/user";
 import { Checkbox } from "../FormFields/Checkbox";
 
+
 export const LavagemForm = () => {
+  const { data: session } = useSession();
+  console.log(session)
+  
   const onSubmit = async (data: ILavagem) => {
     try {
+      
       const { marca, modelo, placa, cor, polimento, limpeza, cheirinho} = data;
-      await signup({marca, modelo, placa, cor, polimento, limpeza, cheirinho});
+      await signupLavagem({ marca, modelo, placa, cor, polimento, limpeza, cheirinho, UserId: String(session?.user?._id)});
       router.push("/lavagem");
     } catch (error) {
       console.log(error);
@@ -107,3 +113,7 @@ export const LavagemForm = () => {
     </Flex>
   );
 };
+function session(arg0: { session: any; token: any; user: any; }) {
+  throw new Error("Function not implemented.");
+}
+

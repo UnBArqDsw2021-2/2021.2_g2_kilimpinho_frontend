@@ -27,6 +27,17 @@ export const signup = async (userData: ISignup) => {
   }
 };
 
+export const signupLavagem = async (userData: ILavagem) => {
+  try {
+    const user = await api.post("/user", userData);
+    toast.success("Sua conta foi cadastrada com sucesso");
+    return user;
+  } catch (err) {
+    const error = err as AxiosError;
+    return error;
+  }
+};
+
 export const updateProfile = async (userData: ISignup) => {
   try {
     const user = await api.post("/users", userData);

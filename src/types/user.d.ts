@@ -17,6 +17,7 @@ interface ISignin {
 }
 
 interface ILavagem{
+  UserId:string;
   marca: string;
   modelo: string;
   placa: string;
