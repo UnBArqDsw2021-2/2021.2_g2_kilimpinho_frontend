@@ -21,7 +21,7 @@ export const signin = async (credentials: ISignin) => {
 
 export const signup = async (userData: ISignup) => {
   try {
-    const user = await api.post("/users", userData);
+    const user = await api.post("/user", userData);
     toast.success("Sua conta foi cadastrada com sucesso");
     return user;
   } catch (err) {

@@ -18,7 +18,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   if (!isAdmin) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/lavagem",
         permanent: false,
       },
     };
