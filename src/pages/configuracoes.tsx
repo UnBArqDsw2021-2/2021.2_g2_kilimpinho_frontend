@@ -15,14 +15,7 @@ interface ConfiguracoesProps {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const isAdmin = await CheckisAdmin(context);
 
-  if (!isAdmin) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
+
   return {
     props: { isAdmin }, // will be passed to the page component as props
   };

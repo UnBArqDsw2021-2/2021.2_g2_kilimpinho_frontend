@@ -4,16 +4,24 @@ import { Flex } from 'reflexbox';
 import { useTheme } from 'styled-components';
 import { Button } from '@/components/Button';
 import { Input, PasswordInput } from '@/components/FormFields';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import InputMask from 'react-input-mask';
 import GridLayout from 'UI/GridLayout';
 import { updateProfile } from '@/services/userService';
+import { useSession } from 'next-auth/react';
 
 export const ProfileForm = () => {
+  const {data: session} = useSession()
+  const reloadSession = () => {
+    const event = new Event("visibilitychange");
+    document.dispatchEvent(event);
+  };
   const onSubmit = async (data: ISignup) => {
     try {
       const { cpf, email, name, password } = data;
-      await updateProfile({ cpf, email, name, password });
+      await updateProfile({ cpf, email, name, password }, session?.user?.token!);
+      reloadSession()
+    
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +34,9 @@ export const ProfileForm = () => {
     formState: { errors, isSubmitting },
     watch,
     control,
-  } = useForm<ISignup>();
+  } = useForm<ISignup>({
+    defaultValues: useMemo(() => session?.user, [session?.user])
+  })
 
   const theme = useTheme();
   // const renderPhone = useCallback(

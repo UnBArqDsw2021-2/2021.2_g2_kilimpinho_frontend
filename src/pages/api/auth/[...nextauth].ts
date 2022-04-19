@@ -75,9 +75,10 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         return baseUrl;
       },
       jwt: async ({ token, user }: any) => {
-        if (token?.user) {
-          return token;
-        }
+        // console.log(req.cookies);
+        // const profile = await api.get("/ping", {
+        //   headers: { Authorization: req.cookies.accessToken },
+        // });
 
         if (user) {
           token.user = { ...user };
@@ -86,11 +87,20 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
         return token;
       },
       session: async ({ session, token }: { session: Session; token: any }) => {
-        console.log(token);
-        session.user = token.user.user;
-        session.token = token;
+        console.log("SEEEE", session, "TOOO", token);
 
-        return session;
+        try {
+          const profile = await api.get("/auth/ping", {
+            headers: { Authorization: `Bearer ${req.cookies.accessToken}` },
+          });
+          console.log("AAA", token);
+          profile.data.isAdmin = token.user.user.isAdmin;
+          session.user = profile.data;
+          session.user.token = token.user.token;
+          return session;
+        } catch (err) {
+          console.log("err", err);
+        }
       },
     },
   };
