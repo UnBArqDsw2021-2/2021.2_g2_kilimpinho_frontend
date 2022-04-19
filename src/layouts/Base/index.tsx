@@ -7,6 +7,7 @@ import { BsTelephone } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BiCar } from "react-icons/bi";
 import * as S from "../styles";
+import { MdOutlineDashboard } from "react-icons/md";
 
 export type AuthTemplateProps = {
   children: React.ReactNode;
@@ -21,8 +22,8 @@ export const BaseLayout = ({ children, header }: AuthTemplateProps) => {
     <S.LayoutContainer>
       <Flex style={{ gap: theme.spacings.medium }}>
         <SideMenu>
-          <MenuItem pathname="/lavagem" icon={<BiCar />}>
-            Lavagem
+          <MenuItem pathname="/dashboard" icon={<MdOutlineDashboard />}>
+            Dashboard
           </MenuItem>
           <MenuItem pathname="/faq" icon={<BsTelephone />}>
             FAQ

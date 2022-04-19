@@ -5,6 +5,7 @@ export const api = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_NODE_API}/api`,
 });
 
+
 const errorResponseHandler = (error: any) => {
   if (error.response) {
     if (typeof error.response.data?.message === 'string') {

@@ -3,7 +3,7 @@ import { Flex } from "@/UI/Flex";
 import Image from "next/image";
 import * as S from "./styles";
 import { Divider } from "@/components/Divider";
-import { signOut, useSession } from "next-auth/react";
+import { signOut, useSession} from "next-auth/react";
 import { IoMdExit } from "react-icons/io";
 import { useTheme } from "styled-components";
 import { useRouter } from "next/router";
@@ -14,6 +14,8 @@ export interface MenuProps {
 
 export const SideMenu = ({ children }: MenuProps) => {
   const { data: session } = useSession();
+
+  console.log(session)
   const router = useRouter();
   const theme = useTheme();
   return (
@@ -37,7 +39,7 @@ export const SideMenu = ({ children }: MenuProps) => {
       <Flex
         alignItems="center"
         gap={theme.spacings.tiny}
-        onClick={() => signOut().then(() => router.push("/"))}
+        onClick={() => signOut({callbackUrl:'/' , redirect: true}).then(() => router.push("/"))}
         cursor="pointer"
       >
         <p>Sair</p>

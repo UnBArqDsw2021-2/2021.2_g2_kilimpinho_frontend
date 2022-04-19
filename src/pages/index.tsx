@@ -7,7 +7,7 @@ import { getSession } from "next-auth/react";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getSession(context);
-  const user = session?.user;
+  const user = session?.user || null;
   return {
     props: { user: user }, // will be passed to the page component as props
   };
