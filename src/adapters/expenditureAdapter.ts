@@ -6,9 +6,9 @@ export class ExpenditureAdapter {
     this.expenditure = expenditure;
   }
 
-  addNewExpenditure() {
+  async addNewExpenditure() {
     const formatedExpenditure = this.formatedExpenditure();
-    registerExpenditure(formatedExpenditure);
+    await registerExpenditure(formatedExpenditure);
   }
   formatedExpenditure(): IExpenditure {
     return {

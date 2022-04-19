@@ -1,11 +1,8 @@
 import { Card } from "@/components/Card";
 import { SideMenu } from "@/components/SideMenu";
 import { MenuItem } from "@/components/SideMenu/MenuItem";
-import { SideMenuItem } from "@/components/SideMenu/styles";
 import { Box, Flex } from "reflexbox";
 import { useTheme } from "styled-components";
-import { AiOutlineHome } from "react-icons/ai";
-import { BsBoxArrowInRight } from "react-icons/bs";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BiCar } from "react-icons/bi";
 import { MdOutlineDashboard } from "react-icons/md";
@@ -24,7 +21,7 @@ export const AdminLayout = ({ children, header }: AuthTemplateProps) => {
     <S.AdminLayoutContainer>
       <Flex style={{ gap: theme.spacings.medium }}>
         <SideMenu>
-          <MenuItem pathname="/lavagem" icon={<MdOutlineDashboard />}>
+          <MenuItem pathname="/dashboard" icon={<MdOutlineDashboard />}>
             Dashboard
           </MenuItem>
 

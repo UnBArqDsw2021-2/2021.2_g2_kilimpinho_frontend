@@ -22,6 +22,7 @@
       "@/UI/*": ["UI/*"], 
       "@/utils/*": ["utils/*"], 
       "@/hooks/*": ["hooks/*"], 
+      "@/contexts/*": ["contexts/*"], 
       
     }
   },

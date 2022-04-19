@@ -11,19 +11,23 @@ import { toast } from "react-toastify";
 import { CurrencyInput } from "../FormFields/CurrencyInput";
 import { Checkbox } from "../FormFields/Checkbox";
 import { ExpenditureAdapter } from "adapters/expenditureAdapter";
+import { useChart } from "@/contexts/ChartContext";
 
 export const ExpenditureForm = () => {
+  const router = useRouter();
+  const { resetChart } = useChart();
   const onSubmit = async (data: IExpenditure) => {
     try {
       const expenditure = new ExpenditureAdapter(data);
 
-      expenditure.addNewExpenditure();
+      await expenditure.addNewExpenditure();
+      resetChart();
       toast.success("Despesa cadastrada com sucesso");
+      router.push("/dashboard");
     } catch (error) {
       console.log(error);
     }
   };
-  const router = useRouter();
 
   const {
     handleSubmit,
