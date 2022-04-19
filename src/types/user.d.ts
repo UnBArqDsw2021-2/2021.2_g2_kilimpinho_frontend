@@ -15,3 +15,14 @@ interface ISignin {
   email: string;
   password: string;
 }
+
+interface ILavagem{
+  UserId:string;
+  marca: string;
+  modelo: string;
+  placa: string;
+  cor: string;
+  polimento: boolean;
+  limpeza: boolean;
+  cheirinho: boolean;
+}
