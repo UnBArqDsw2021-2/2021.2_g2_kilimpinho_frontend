@@ -1,7 +1,7 @@
 import { api } from "@/services/api";
+import { ProfileAdapter } from "adapters/profileAdapter";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
-
 
 export const signin = async (credentials: ISignin) => {
   try {
@@ -27,9 +27,16 @@ export const signup = async (userData: ISignup) => {
   }
 };
 
-export const updateProfile = async (userData: ISignup) => {
+export const updateProfile = async (userData: ISignup, token: string) => {
+
+  const profile = new ProfileAdapter(userData)
+  const newData = profile.formatedProfileToEdition()
   try {
-    const user = await api.post("/users", userData);
+    const user = await api.patch("/user", newData, {
+      headers: {
+        Authorization: `Bearer ${token!}`
+      },
+    });
     toast.success("Seus dados foram alterados com sucesso");
     return user;
   } catch (err) {

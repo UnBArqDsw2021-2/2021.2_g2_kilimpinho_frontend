@@ -3,6 +3,7 @@ interface IUser {
   email: string;
   cpf: string;
   isAdmin: boolean;
+  token: string;
   _id: string;
 }
 

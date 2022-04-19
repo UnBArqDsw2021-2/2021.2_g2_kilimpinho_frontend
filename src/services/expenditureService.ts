@@ -7,7 +7,7 @@ export const registerExpenditure = async (data: IExpenditure) => {
     return expenditure?.data;
   } catch (err) {
     console.log(err);
-    throw new Error(err as string);
+    // throw new Error(err as string);
   }
 };
 
@@ -24,7 +24,7 @@ export const getExpenditures = async () => {
     return monthArray;
   } catch (err) {
     console.log(err);
-    throw new Error(err as string);
+    // throw new Error(err as string);
   }
 };
 

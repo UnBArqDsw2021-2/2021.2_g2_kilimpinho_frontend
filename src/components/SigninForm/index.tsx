@@ -16,12 +16,11 @@ export const SigninForm = () => {
       const response = (await signIn("credentials", {
         ...credentials,
         redirect: false, // prevents page reload on error
-        callbackUrl: "/configuracoes",
       })) as unknown as SignInResponse;
 
       if (response?.ok) {
         toast.success("Seja bem vindo");
-        router.push("/despesas");
+        router.push("/dashboard");
       } else {
         toast.error(response?.error);
       }
@@ -69,7 +68,7 @@ export const SigninForm = () => {
         >
           <Link href="#">Esqueceu sua senha?</Link>
           <Button type="submit" isLoading={isSubmitting} size="large">
-            LOGIN
+            ENTRAR
           </Button>
         </Flex>
       </form>
