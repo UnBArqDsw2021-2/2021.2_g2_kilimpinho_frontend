@@ -30,9 +30,22 @@ export const signup = async (userData: ISignup) => {
 	}
 };
 
-export const avaliation = async (userAvali: Avaliation) => {
+export const signupLavagem = async (userData: ILavagem) => {
 	try {
-		console.log("cucu", userAvali);
+		const user = await api.post("/service", userData);
+		toast.success("Sua conta foi cadastrada com sucesso");
+		return user;
+	} catch (err) {
+		const error = err as AxiosError;
+		return error;
+	}
+};
+
+export const updateProfile = async (userData: ISignup) => {
+	try {
+		const user = await api.post("/users", userData);
+		toast.success("Seus dados foram alterados com sucesso");
+		return user;
 	} catch (err) {
 		const error = err as AxiosError;
 		throw new Error(error.response?.data);
