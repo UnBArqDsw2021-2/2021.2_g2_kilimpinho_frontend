@@ -17,6 +17,7 @@
   "dependencies": {
     "@types/nprogress": "^0.2.0",
     "@types/react-input-mask": "^3.0.1",
+    "@types/react-star-rating-component": "^1.4.1",
     "@types/reflexbox": "^4.0.4",
     "@types/styled-components": "^5.1.24",
     "axios": "^0.26.1",
@@ -31,6 +32,7 @@
     "react-icons": "^4.3.1",
     "react-input-mask": "^2.0.4",
     "react-number-format": "^4.9.1",
+    "react-star-ratings": "^2.3.0",
     "react-toastify": "^8.2.0",
     "reflexbox": "^4.0.6",
     "styled-components": "^5.3.3",
@@ -39,6 +41,7 @@
   "devDependencies": {
     "@types/node": "17.0.21",
     "@types/react": "17.0.39",
+    "@types/react-star-ratings": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "eslint": "^8.10.0",
